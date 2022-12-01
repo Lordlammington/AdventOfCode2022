@@ -2,24 +2,24 @@
 {
     internal class Day1
     {
-        public const string fileloc = "C:\\Users\\Liam\\source\\repos\\AdventOfCode\\AdventOfCode\\PuzzleInputs\\Day1Input.txt";
+        public const string filePath = "C:\\Users\\Liam\\source\\repos\\AdventOfCode\\AdventOfCode\\PuzzleInputs\\Day1Input.txt";
 
         private static List<int> GetTotalCalorieList()
         {
-            string[] loadedtext = File.ReadAllLines(fileloc);
-            List<int> calorieList = new List<int>();
+            var calorieList = new List<int>();
 
-            var runningtotal = 0;
+            var runningTotal = 0;
 
-            foreach (var line in loadedtext)
+            //Should probably turn this into a LINQ statement
+            foreach (var line in File.ReadAllLines(filePath))
             {
                 if (line == string.Empty)
                 {
-                    calorieList.Add(runningtotal);
-                    runningtotal = 0;
+                    calorieList.Add(runningTotal);
+                    runningTotal = 0;
                     continue;
                 }
-                runningtotal = int.Parse(line) + runningtotal;
+                runningTotal = int.Parse(line) + runningTotal;
             }
 
             return calorieList;
